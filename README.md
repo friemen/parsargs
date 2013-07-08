@@ -28,11 +28,10 @@ with a simple map:
         :zipcode ["Zipcode" :text]
         :city    ["City" :text]})
 ```
-No visual noise, that's fine. But unfortunately that is not enough. 
-You'll need to specify a parser and a formatter function to deal with 
-dates and numeric data.
-
-The code that implememts the mapping would ideally work on something like this:
+No visual noise, great. But unfortunately that is not enough. 
+You'll need to also specify a parser and a formatter function to deal with 
+dates and numeric data. 
+Ideally the code that implements the mapping would work on something like this:
 ```clojure
 (def m [{:data-path :name
          :signal-path ["Name" :text]
@@ -43,12 +42,16 @@ The code that implememts the mapping would ideally work on something like this:
 	    ; ...
 	])
 ```
-
 But this is a lot of boilerplate to read and write because
 
  - in most cases formatter and parser would take default values `str` and `identity`.
  - the keywords like `:data-path` visually create more noise than signal.
 
+
+Now you're in a dilemma.
+Either the data structure representing the specification would become
+cumbersome, or the data structure the data mapper works on would make
+implementation more complicated and therefore harder to comprehend.
 
 Here parsargs offers a way to specify how the concise notation is mapped
 to an easy-to-work-with data structure.
