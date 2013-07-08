@@ -117,10 +117,3 @@
   (fn [[first-element & remaining-input]]
     [(parse parser-fn first-element) remaining-input]))
 
-
-#_(parse (some
-          (sequence :data-path (value keyword?)
-                    :formatter (optval fn? str)
-                    :signal-path (value keyword?)
-                    :parser (optval fn? identity)))
-         [:foo :bar])

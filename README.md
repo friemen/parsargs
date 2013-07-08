@@ -88,7 +88,29 @@ from a concise notation:
 
 ## Usage
 
-Will be available on Clojars soon.
+Include the following dependency in your project.clj 
+
+    [parsargs "1.0.0"]
+
+### API
+
+The core namespace provides a set of parser generating functions
+and the `parse` function that applies a parser function to a
+sequence.
+
+The following parser factories are provided:
+
+ - **value** -- Return element if predicate holds, otherwise fail.
+ - **optval** -- Return element if predicate holds, otherwise default value.  
+ - **omit** -- Skip element if predicate holds.
+ - **some** -- Apply parser-fn subsequently and create vector of parsed values.
+ - **sequence** -- Apply parser-fns subsequently and create map of parsed values.
+ - **alternative** -- Apply first matching parser-fn or fail.
+ - **descent-with** -- Apply parser-fn to nested data structure.
+
+
+See also [core.clj](src/parsargs/core.clj) for more details.
+
 
 ## License
 
