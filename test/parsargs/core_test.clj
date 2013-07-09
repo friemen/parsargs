@@ -66,6 +66,11 @@
          [nil])))
 
 
+(deftest map-test
+  (is (= 43
+         (p/parse (p/map inc (p/value number?)) [42]))))
+
+
 (deftest descent-with-test
   (let [sub-parser (p/some (p/value string?))
         parser (p/sequence :foo (p/value string?)

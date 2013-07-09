@@ -1,5 +1,5 @@
 (ns parsargs.core
-  (:refer-clojure :exclude [sequence some]))
+  (:refer-clojure :exclude [sequence some map]))
 
 
 ;; Parse sequence of Clojure data to maps and vectors.
@@ -96,6 +96,14 @@
           (recur fns))
         (throw (IllegalArgumentException. (str "Input " input " didn't match any alternative " parse-fns)))))))
 
+
+(defn map
+  "Returns a parser function that parses input using the given parser function
+   and applies f to the parsed result. A pair [(f parsed-result) remaining-input]
+   is returned. f is a one-arg function."
+  [f parser-fn]
+  (fn [input] (let [[parsed-result remaining-input] (parser-fn input)]
+    [(f parsed-result) remaining-input])))
 
 
 (defn parse
