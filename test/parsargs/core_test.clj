@@ -71,6 +71,18 @@
          (p/parse (p/map inc (p/value number?)) [42]))))
 
 
+(deftest optional-test
+  (let [parser (p/sequence :symbol (p/value symbol?)
+                           :seq (p/value vector?)
+                           :bind (p/optional
+                                     (p/sequence :let (p/omit #(= :let %))
+                                                 :symbol (p/value symbol?)
+                                                 :expr (p/value (complement nil?)))))]
+    (are [r input] (= r (p/parse parser input))
+         {:symbol 'foo :seq []}         ['foo []]
+         {:symbol 'foo :seq [1 2 3] :bind {:symbol 'bar :expr true}} ['foo [1 2 3] :let 'bar true])))
+
+
 (deftest descent-with-test
   (let [sub-parser (p/some (p/value string?))
         parser (p/sequence :foo (p/value string?)

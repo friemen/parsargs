@@ -102,8 +102,18 @@
    and applies f to the parsed result. A pair [(f parsed-result) remaining-input]
    is returned. f is a one-arg function."
   [f parser-fn]
-  (fn [input] (let [[parsed-result remaining-input] (parser-fn input)]
-    [(f parsed-result) remaining-input])))
+  (fn [input]
+    (let [[parsed-result remaining-input] (parser-fn input)]
+      [(f parsed-result) remaining-input])))
+
+
+(defn optional
+  "Returns a parser that applies the given parser and either returns its result
+   or the pair [nil input] if parser-fn fails."
+  [parser-fn]
+  (fn [input]
+    (try (parser-fn input)
+         (catch IllegalArgumentException ex [nil input]))))
 
 
 (defn parse

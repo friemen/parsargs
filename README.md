@@ -90,7 +90,7 @@ from a concise notation:
 
 Include the following dependency in your project.clj 
 
-    [parsargs "1.1.0"]
+    [parsargs "1.2.0"]
 
 ### API
 
@@ -107,8 +107,8 @@ The following parser factories are provided:
  - **sequence** -- Apply parser-fns subsequently and create map of parsed values.
  - **alternative** -- Apply first matching parser-fn or fail.
  - **descent-with** -- Apply parser-fn to nested data structure.
- - **map** -- First apply parser-fn, then apply transformation to the parsed value.
-
+ - **map** -- Apply parser-fn and apply transformation to the parsed value.
+ - **optional** -- Apply parser-fn, continue if it fails.
 
 See also [core.clj](src/parsargs/core.clj) for more details.
 

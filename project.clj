@@ -1,4 +1,4 @@
-(defproject parsargs "1.1.0"
+(defproject parsargs "1.2.0"
   :description "Parsing concise argument sequences to nice data structures."
   :url "https://github.com/friemen/parsargs"
   :license {:name "Eclipse Public License"
