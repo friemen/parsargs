@@ -5,6 +5,12 @@ data structures that are easy to process.
 
 [![Build Status](https://travis-ci.org/friemen/parsargs.png?branch=master)](https://travis-ci.org/friemen/parsargs)
 
+[![Clojars Project](http://clojars.org/parsargs/latest-version.svg)](http://clojars.org/parsargs)
+
+Include a dependency as show above to your project.clj
+
+[API docs](https://friemen.github.com/parsargs)
+
 ## Motivation
 
 When creating an API there is always a tension between ease of its use
@@ -86,13 +92,7 @@ from a concise notation:
 ```
 
 
-## Usage
-
-Include the following dependency in your project.clj 
-
-    [parsargs "1.2.0"]
-
-### API
+## API overview
 
 The core namespace provides a set of parser generating functions
 and the `parse` function that applies a parser function to a
