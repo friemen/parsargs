@@ -5,11 +5,11 @@ data structures that are easy to process.
 
 [![Build Status](https://travis-ci.org/friemen/parsargs.png?branch=master)](https://travis-ci.org/friemen/parsargs)
 
-[![Clojars Project](http://clojars.org/parsargs/latest-version.svg)](http://clojars.org/parsargs)
+[![Clojars Project](https://clojars.org/parsargs/latest-version.svg)](https://clojars.org/parsargs)
 
 Include a dependency as show above to your project.clj
 
-[API docs](https://friemen.github.com/parsargs)
+[API docs](https://friemen.github.io/parsargs)
 
 ## Motivation
 
@@ -20,7 +20,7 @@ notation for those who use the API, including specifying function arguments.
 The API function implementation demands data structures that it can easily
 work with. Although the notation of Clojure data structures is indeed
 very light-weight there are times when you want to offer an even
-simpler way for specifying arguments. 
+simpler way for specifying arguments.
 
 As an example let's assume you're creating an API for mappings between
 Clojure data and UI components. Obviously you need to specify
@@ -34,16 +34,16 @@ with a simple map:
         :zipcode ["Zipcode" :text]
         :city    ["City" :text]})
 ```
-No visual noise, great. But unfortunately that is not enough. 
-You'll need to also specify a parser and a formatter function to deal with 
-dates and numeric data. 
+No visual noise, great. But unfortunately that is not enough.
+You'll need to also specify a parser and a formatter function to deal with
+dates and numeric data.
 Ideally the code that implements the mapping would work on something like this:
 ```clojure
 (def m [{:data-path :name
          :signal-path ["Name" :text]
 	     :formatter str
 	     :parser identity},
-	    ; ... 
+	    ; ...
 	    ; more mapping specifications
 	    ; ...
 	])
@@ -65,14 +65,14 @@ to an easy-to-work-with data structure.
 ```clojure
 (require [parsargs.core :as p])
 
-(def mapping-parser 
+(def mapping-parser
              (p/some
                 (p/sequence :data-path (p/alternative
                                         (p/value vector?)
                                         (p/value keyword?))
 							:signal-path (p/alternative
                                           (p/value #(and (vector? %) (string? (last %))))
-                                          (p/value string?))			
+                                          (p/value string?))
                             :formatter (p/optval fn? str)
                             :parser (p/optval fn? identity))))
 
@@ -85,10 +85,10 @@ The mapping function is now your factory to create full blown data structures
 from a concise notation:
 
 ```clojure
-(def m (mapping :name    ["Name" :text]    
+(def m (mapping :name    ["Name" :text]
                 :street  ["Street" :text]
-                :zipcode ["Zipcode" :text] :parser to-number 
-                :city    ["City" :text])) 
+                :zipcode ["Zipcode" :text] :parser to-number
+                :city    ["City" :text]))
 ```
 
 
@@ -101,7 +101,7 @@ sequence.
 The following parser factories are provided:
 
  - **value** -- Return element if predicate holds, otherwise fail.
- - **optval** -- Return element if predicate holds, otherwise default value.  
+ - **optval** -- Return element if predicate holds, otherwise default value.
  - **omit** -- Skip element if predicate holds.
  - **some** -- Apply parser-fn subsequently and create vector of parsed values.
  - **sequence** -- Apply parser-fns subsequently and create map of parsed values.
@@ -115,6 +115,6 @@ See also [core.clj](src/parsargs/core.clj) for more details.
 
 ## License
 
-Copyright 2013 F.Riemenschneider
+Copyright 2013-2025 F.Riemenschneider
 
 Distributed under the Eclipse Public License, the same as Clojure.
