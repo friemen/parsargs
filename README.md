@@ -3,8 +3,6 @@
 Parse convenient to specify function arguments into Clojure
 data structures that are easy to process.
 
-[![Build Status](https://travis-ci.org/friemen/parsargs.png?branch=master)](https://travis-ci.org/friemen/parsargs)
-
 [![Clojars Project](https://clojars.org/parsargs/latest-version.svg)](https://clojars.org/parsargs)
 
 Include a dependency as show above to your project.clj
@@ -115,6 +113,6 @@ See also [core.clj](src/parsargs/core.clj) for more details.
 
 ## License
 
-Copyright 2013-2025 F.Riemenschneider
+Copyright 2013-2026 F.Riemenschneider
 
 Distributed under the Eclipse Public License, the same as Clojure.
